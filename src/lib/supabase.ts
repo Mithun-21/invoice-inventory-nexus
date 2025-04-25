@@ -1,8 +1,15 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = 'YOUR_SUPABASE_URL';
-const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+// Replace these placeholder values with your actual Supabase URL and anon key
+// These must be complete, valid URLs and keys
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://your-project-id.supabase.co';
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'your-anon-key';
+
+// Ensure the URL is valid before creating the client
+if (!supabaseUrl.startsWith('http')) {
+  console.error('Invalid Supabase URL. Please check your configuration.');
+}
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
 
